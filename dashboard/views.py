@@ -8,8 +8,8 @@ from django.contrib import messages
 def home(request):
     
     muertesViolentas = MuertesViolentas.objects.all()
-    messages.success(request, "¡Contactos listados!")
-    return render(request, "home.html", {"MuertesViolentas" : muertesViolentas})
+    messages.success(request, "¡Registros Cargados!")
+    return render(request, "home.html", {"muertesViolentas" : muertesViolentas})
 
 def RegistrarMuertesViolentas(request):
     

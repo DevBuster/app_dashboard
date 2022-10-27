@@ -9,14 +9,15 @@ def home(request):
     
     muertesViolentas = MuertesViolentas.objects.all()
     messages.success(request, "¡Contactos listados!")
-    return render(request, "home.html", {"muertesViolentas" : muertesViolentas})
+    return render(request, "home.html", {"MuertesViolentas" : muertesViolentas})
 
 def RegistrarMuertesViolentas(request):
     
     if request.method == "POST":
-        tipoMuerte = request.POST["select-tipo-muerte"]
+        tipoMuerte = request.POST["tipo-muerte"]
+        numeroVictimas = request.POST["numeros-victimas"]
     
-        muertesViolentas = MuertesViolentas.objects.create(tipoMuerte = tipoMuerte)
+        muertesViolentas = MuertesViolentas.objects.create(tipoMuerte = tipoMuerte, numeroVictimas = numeroVictimas)
         messages.success(request, "¡Muerte Violenta registrada!")
         return redirect("/")
     else:

@@ -45,16 +45,14 @@
             
                                 <tbody>
                                     <tr>
-                                        {% for i in contactos %}
+                                        {% for i in muertesViolentas %}
                                     </tr>
                                         <td>{{i.id}}</td>
-                                        <td>{{i.nombres}}</td>
-                                        <td>{{i.apellidos}}</td>
-                                        <td>{{i.telefono}}</td>
-                                        <td>{{i.email}}</td>
+                                        <td>{{i.tipoMuerte}}</td>
+                                        <td>{{i.numeroVictimas}}</td>
                                         <td>
                                             
-                                        <a href="editar_contactos/{{i.id}}" class="btn btn-outline-primary" 
+                                        <a href="editar_muertesViolentas/{{i.id}}" class="btn btn-outline-primary" 
                                         title="Editar">Editar</a>
 
                                         <a href="eliminar_contactos/{{i.id}}" 

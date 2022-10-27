@@ -1,0 +1,82 @@
+<!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
+{% extends "./base.html" %} 
+
+{% block title %}INICIO{% endblock %}
+
+{% block body %}    
+    <div class="py-5">
+        <div class="container-fluid">
+            
+            <!-- CONTROL DE MENSAJES DEPENDIENDO DE LA ACCION -->
+            {% if messages %}
+            {% for message in messages %}
+            <div class="col-md-12 col-sm-12 col-lg-4 col-xs-4">
+                <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show" 
+                role="alert">
+
+                    <img src="static/resources/bootstrap/icons/exclamation-octagon.svg"
+                    width="25px" height="25px" style="margin-right: 5px;"></img></svg>
+    
+                    <div>
+
+                        <strong style="text-align: center">{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" 
+                        aria-label="Close"></button>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="shadow-lg bg-body rounded">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive py-2">
+                            
+                            <table class="table table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRES</th>
+                                        <th>APELLIDOS</th>
+                                        <th>TELEFONO</th>
+                                        <th>EMAIL</th>
+                                        <th>OPCIONES</th>
+                                    </tr>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        {% for i in contactos %}
+                                    </tr>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.nombres}}</td>
+                                        <td>{{i.apellidos}}</td>
+                                        <td>{{i.telefono}}</td>
+                                        <td>{{i.email}}</td>
+                                        <td>
+                                            
+                                        <a href="editar_contactos/{{i.id}}" class="btn btn-outline-primary" 
+                                        title="Editar">Editar</a>
+
+                                        <a href="eliminar_contactos/{{i.id}}" 
+                                        class="btn btn-outline-danger btn_eliminar_contactos" 
+                                        title="Eliminar">Eliminar</a>
+                                    </td>                                        
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-5" style="text-align: center">
+                <a href="registrar_contactos/" class="btn btn-outline-success"
+                title="Crear">Crear contacto</a>
+            </div>
+
+        </div>
+    </div> 
+{% endblock %}

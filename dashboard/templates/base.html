@@ -1,0 +1,82 @@
+<!-- ESTE FICHERO CONTIENE EL LAYOUT BASE QUE SERÁ COMPARTIDO AL RESTO DE FICHEROS .HTML -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="/static/icons/favicon-32x32.png" />
+
+  <!-- BOOTSTRAP v5.2.0 - NORMALIZE V8.0.2 - BOOTSTRAP ICONS v1.9.1-->
+  <link rel="stylesheet" href="{% static "resources/bootstrap/css/bootstrap.min.css" %}" />
+  <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="{% static 'css/tablas.css' %}" />
+
+  <!-- JAVASCRIPT -->
+  <script type="text/javascript" src="{% static "/resources/bootstrap/js/bootstrap.min.js" %}"></script>  
+  
+  <!-- CUSTOM JAVASCRIPT -->
+  <script type="text/javascript" src="{% static 'js/eliminar_contactos.js' %}" defer></script>
+
+  <title>{% block title %} {% endblock %}</title>
+</head>
+
+<html>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+
+      <div class="container-fluid">
+
+        <img src="/static/icons/android-chrome-192x192.png/" alt="Logo de la pagina" width="32" height="32"
+          title="Logo"></img>
+
+        <a class="navbar-brand lead" style="margin-left: 16px;" href="/">Gestion de Contactos</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active lead" aria-current="page" href="/">Inicio</a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body %}
+
+      {% endblock %}
+    </div>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 border-top">
+
+        <div class="col-md-4 d-flex align-items-center">
+          <img style="margin-right: 5px;" src="{% static 'resources/bootstrap/icons/c-circle.svg' %}" alt="CopyRight" title="CopyRight">
+          <span class="text-muted">CopyRight 2022 DevBuster - Zylver</span>
+        </div>
+
+          <a class="text-muted" href="https://github.com/DevBuster/crud_django" target="_blank">
+            <img src="{% static 'resources/bootstrap/icons/github.svg' %}" alt="GitHub" width="32" height="32" title="GitHub">
+            </img>
+          </a>
+          
+      </footer>
+    </div>
+  </body>
+</html>

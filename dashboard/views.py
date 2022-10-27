@@ -22,9 +22,9 @@ def RegistrarMuertesViolentas(request):
     else:
         pass
 
-# def vista_registrar_contactos(request):
+def VistaRegistrarMuertesViolentas(request):
 
-#     return render(request, "crear_contactos.html")
+    return render(request, "registrar_muertes_violentas.html")
     
 # def editar_contactos(request):
     

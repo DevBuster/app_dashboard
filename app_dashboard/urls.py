@@ -1,4 +1,4 @@
-"""app_gestion_contactos URL Configuration
+"""app_dashboard URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,14 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from gestion_contactos import views
+# from dashboard import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include('gestion_contactos.urls')),
-    # path("peticion_contacto", views.peticion_contacto),
-    # path("mostrar_contacto", views.mostrar_contacto),
-    # path("editar_contacto/<int:id>", views.editar_contacto),
-    # path("actualizar_contacto/<int:id>", views.actualizar_contacto),
-    # path("eliminar_contacto/<int:id>", views.eliminar_contacto),
+    path("", include('dashboard.urls')),
 ]

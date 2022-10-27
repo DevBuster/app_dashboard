@@ -1,6 +1,6 @@
 from pyexpat import model
 from django.shortcuts import render, redirect
-from gestion_contactos.models import Contactos
+from dashboard.models import Contactos
 from django.contrib import messages
 
 # Create your views here.

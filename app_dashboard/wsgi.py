@@ -1,5 +1,5 @@
 """
-WSGI config for app_gestion_contactos project.
+WSGI config for dashboard project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app_gestion_contactos.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app_dashboard.settings')
 
 application = get_wsgi_application()

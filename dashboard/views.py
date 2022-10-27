@@ -14,8 +14,8 @@ def home(request):
 def RegistrarMuertesViolentas(request):
     
     if request.method == "POST":
-        tipoMuerte = request.POST["tipo-muerte"]
-        numeroVictimas = request.POST["numeros-victimas"]
+        tipoMuerte = request.POST["tipo_muerte"]
+        numeroVictimas = request.POST["numeros_victimas"]
     
         muertesViolentas = MuertesViolentas.objects.create(tipoMuerte = tipoMuerte, numeroVictimas = numeroVictimas)
         messages.success(request, "¡Muerte Violenta registrada!")
@@ -27,39 +27,36 @@ def VistaRegistrarMuertesViolentas(request):
 
     return render(request, "registrar_muertes_violentas.html")
     
-# def editar_contactos(request):
+def EditarMuertesViolentas(request):
     
-#     if request.method == "POST":
-#         contactos_id = request.POST["contactos_id"]
-#         nombres = request.POST["contactos_nombres"]
-#         apellidos = request.POST["contactos_apellidos"]
-#         telefono = request.POST["contactos_telefono"]
-#         email = request.POST["contactos_email"]
+    if request.method == "POST":
+        muertesViolentas_id =  request.POST["muertesViolentas_id"]
+        tipoMuerte = request.POST["tipo_muerte"]
+        numeroVictimas = request.POST["numero_victimas"]
 
-#         contactos = Contactos.objects.get(id = request.POST["contactos_id"])        
+        muertesViolentas = MuertesViolentas.objects.get(id = request.POST["muertesViolentas_id"])        
 
-#         contactos.id = contactos_id
-#         contactos.nombres = nombres
-#         contactos.apellidos = apellidos
-#         contactos.telefono = telefono
-#         contactos.email = email
-#         contactos.save()   
+        muertesViolentas.id = muertesViolentas_id
+        muertesViolentas.tipoMuerte = tipoMuerte
+        muertesViolentas.numeroVictimas = numeroVictimas
         
-#         messages.success(request, "¡Contacto actualizado!")
+        muertesViolentas.save()   
         
-#         return redirect('/')
-#     else:
-#         pass
+        messages.success(request, "Muerte Violenta Actualizada!")
+        
+        return redirect('/')
+    else:
+        pass
     
-# def vista_editar_contactos(request, contactos_id):
+def VistaEditarMuertesViolentas(request, muertesViolentas_id):
     
-#     contactos = Contactos.objects.get(id = contactos_id)
-#     return render(request, "editar_contactos.html", {"contactos":contactos})
+    muertesViolentas = MuertesViolentas.objects.get(id = muertesViolentas_id)
+    return render(request, "editar_muertes_violentas.html", {"muertesViolentas" : muertesViolentas})
 
-# def eliminar_contactos(request, contactos_id):
+def EliminarMuertesViolentas(request, muertesViolentas_id):
     
-#     contactos = Contactos.objects.get(id = contactos_id)
-#     contactos.delete()
+    muertesViolenyas = MuertesViolentas.objects.get(id = muertesViolentas_id)
+    muertesViolenyas.delete()
     
-#     messages.success(request, "¡Contacto eliminado!")
-#     return redirect("/")
+    messages.success(request, "Muerte Violenta eliminada!")
+    return redirect("/")

@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.home, name = "home"),
     path('registrar_muertes_violentas', views.RegistrarMuertesViolentas, name = "registrar muertes violentas"),
     path('registrar_muertes_violentas/', views.VistaRegistrarMuertesViolentas, name = "registrar muertes violentas"),
-    # path('editar_contactos/<int:contactos_id>/', views.vista_editar_contactos, name = "editar contactos"),
-    # path('editar_contactos/', views.editar_contactos, name = "editar contactos"),
-    # path('eliminar_contactos/<int:contactos_id>', views.eliminar_contactos, name = "eliminar contactos"),
+    path('editar_muertes_violentas/<int:muertesViolentas_id>/', views.VistaEditarMuertesViolentas, name = "editar muertes violentas"),
+    path('editar_muertes_violentas/', views.EditarMuertesViolentas, name = "editar muertes violentas"),
+    path('eliminar_muertes_violentas/<int:muertesViolentas_id>', views.EliminarMuertesViolentas, name = "eliminar muertes violentas"),
 ]

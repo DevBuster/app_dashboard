@@ -1,13 +1,9 @@
 from django.contrib import admin
-from .models import muertesViolentas
-from .models import muertesAccidentes
-from .models import muertesAccidentales
-from .models import homicidios
-from .models import suicidios
+from .models import MuertesViolentas, MuertesAccidentes, MuertesAccidentales, MuertesHomicidios, MuertesSuicidios
 # Register your models here.
 
-admin.site.register(muertesViolentas)
-admin.site.register(muertesAccidentes)
-admin.site.register(muertesAccidentales)
-admin.site.register(homicidios)
-admin.site.register(suicidios)
+admin.site.register(MuertesViolentas)
+admin.site.register(MuertesAccidentes)
+admin.site.register(MuertesAccidentales)
+admin.site.register(MuertesHomicidios)
+admin.site.register(MuertesSuicidios)

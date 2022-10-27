@@ -4,51 +4,51 @@ from django.db import models
 # Create your models here.
 
 # CREAMOS EL MODELO PARA DEFINIR LOS DATOS Y SU SCOPE DE USO
-class muertesViolentas(models.Model):
+class MuertesViolentas(models.Model):
     tipoMuerte = models.TextField(max_length = 100, null = False)
     
     class Meta:
-        db_table = "muertes_violentas"
+        db_table = "muertesViolentas"
     
     def __str__(self):
         texto = "{0} ({1})"
         return texto.format(self.id, self.tipoMuerte)
     
-class muertesAccidentes(models.Model):
+class MuertesAccidentes(models.Model):
     tipoVehiculo = models.TextField(max_length = 100, null = False)
     
     class Meta:
-        db_table = "muertes_accidentes"
+        db_table = "muertesAccidentes"
     
     def __str__(self):
         texto = "{0} ({1})"
         return texto.format(self.id, self.tipoVehiculo)
 
-class muertesAccidentales(models.Model):
+class MuertesAccidentales(models.Model):
     tipoAccidente = models.TextField(max_length = 100, null = False)
 
     class Meta:
-        db_table = "muertes_accidentales"
+        db_table = "muertesAccidentales"
     
     def __str__(self):
         texto = "{0} ({1})"
         return texto.format(self.id, self.tipoAccidente)
     
-class muertesHomicidios(models.Model):
+class MuertesHomicidios(models.Model):
     tipoHomicidio = models.TextField(max_length = 100, null = False)
 
     class Meta:
-        db_table = "homicidios"
+        db_table = "muertesHomicidios"
     
     def __str__(self):
         texto = "{0} ({1})"
         return texto.format(self.id, self.tipoHomicidio)
 
-class muertesSuicidios(models.Model):
+class MuertesSuicidios(models.Model):
     tipoSuicidio = models.TextField(max_length = 100, null = False)
 
     class Meta:
-        db_table = "suicidios"
+        db_table = "muertesSuicidios"
     
     def __str__(self):
         texto = "{0} ({1})"

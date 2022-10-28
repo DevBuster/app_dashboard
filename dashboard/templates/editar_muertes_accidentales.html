@@ -1,0 +1,47 @@
+<!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
+{% extends "./base.html" %} 
+
+{% block title %}EDITAR MUERTES ACCIDENTALES{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-4 col-md-offset-4; py-5">
+        <div class="shadow-lg bg-body rounded">
+            <div class="card">
+                <div class="card-body">
+
+                    <h2 class="lead" style="text-align: center">EDITAR MUERTES ACCIDENTALES</h2>
+
+                    <form action="/editar_muertes_accidentales/" method="POST">
+    
+                        {% csrf_token %}
+                        
+                        <div class="form-group" style="margin-bottom: 5%;border-left-width: 2px;border-left-style: solid;padding-left: 5px;">
+                            <input type="hidden" class="form-control" name="muertesAccidentales_id" id="muertesAccidentales_id" required 
+                            maxlength="100" placeholder="id" value="{{muertesAccidentales.id}}" readonly></input>
+                        </div>
+    
+                        <div class="form-floating mb-3"  style="margin-bottom: 5%">
+                            <input type="text" class="form-control" name="tipo_accidente" id="tipo_accidente" placeholder="tipo"
+                            maxlength="100" value="{{muertesAccidentales.tipoAccidente}}" required>
+                            <label for="tipo_muerte">tipo de muerte</label>
+                        </div>
+
+                        <div class="form-floating mb-3"  style="margin-bottom: 5%">
+                            <input type="text" class="form-control" name="numero_victimas" id="numero_victimas" placeholder="victimas"
+                            maxlength="100" value="{{muertesAccidentales.numeroVictimas}}" required>
+                            <label for="numero_victimas">numero de victimas</label>
+                        </div>
+
+                        <div class="form-group" style="text-align: center">
+                            <button type="submit" class="btn btn-success btn-block text-white" title="Actualizar">Actualizar</button>
+                            <a href="/" class="btn btn-danger" title="Cancelar">Cancelar</a></td>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

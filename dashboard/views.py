@@ -2,6 +2,7 @@ from pyexpat import model
 from django.shortcuts import render, redirect
 from dashboard.models import MuertesViolentas
 from dashboard.models import MuertesAccidentes
+from dashboard.models import MuertesAccidentales
 from django.contrib import messages
 
 # Create your views here.
@@ -10,8 +11,11 @@ def home(request):
     
     muertesViolentas = MuertesViolentas.objects.all()
     muertesAccidentes = MuertesAccidentes.objects.all()
+    muertesAccidentales = MuertesAccidentales.objects.all()
     messages.success(request, "¡Registros Cargados!")
-    return render(request, "home.html", {"muertesViolentas" : muertesViolentas, "muertesAccidentes" : muertesAccidentes})
+    return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
+                                         "muertesAccidentes" : muertesAccidentes,
+                                        "muertesAccidentales" : muertesAccidentales})
 
 def RegistrarMuertesViolentas(request):
     
@@ -112,4 +116,55 @@ def EliminarMuertesAccidentes(request, muertesAccidentes_id):
     muertesAccidentes.delete()
     
     messages.success(request, "Muerte accidente eliminada!")
+    return redirect("/")
+#----------------------------------------------------------------------------------------------------
+
+def RegistrarMuertesAccidentales(request):
+    
+    if request.method == "POST":
+        tipoAccidente = request.POST["tipo_accidente"]
+        numeroVictimas = request.POST["numeros_victimas"]
+    
+        muertesAccidentales = MuertesAccidentales.objects.create(tipoAccidente = tipoAccidente, numeroVictimas = numeroVictimas)
+        messages.success(request, "¡Muerte accidentales registrada!")
+        return redirect("/")
+    else:
+        pass
+
+def VistaRegistrarMuertesAccidentales(request):
+
+    return render(request, "crear_muertes_accidentales.html")
+    
+def EditarMuertesAccidentales(request):
+    
+    if request.method == "POST":
+        muertesAccidentales_id =  request.POST["muertesAccidentales_id"]
+        tipoAccidente = request.POST["tipo_accidente"]
+        numeroVictimas = request.POST["numero_victimas"]
+
+        muertesAccidentales = MuertesAccidentales.objects.get(id = request.POST["muertesAccidentales_id"])        
+
+        muertesAccidentales.id = muertesAccidentales_id
+        muertesAccidentales.tipoVehiculo = tipoAccidente
+        muertesAccidentales.numeroVictimas = numeroVictimas
+        
+        muertesAccidentales.save()   
+        
+        messages.success(request, "Muerte accidentales Actualizada!")
+        
+        return redirect('/')
+    else:
+        pass
+    
+def VistaEditarMuertesAccidentales(request, muertesAccidentales_id):
+    
+    muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
+    return render(request, "editar_muertes_accidentales.html", {"muertesAccidentales" : muertesAccidentales})
+
+def EliminarMuertesAccidentes(request, muertesAccidentales_id):
+    
+    muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
+    muertesAccidentales.delete()
+    
+    messages.success(request, "Muerte accidentales eliminada!")
     return redirect("/")

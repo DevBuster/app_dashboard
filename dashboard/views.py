@@ -4,6 +4,7 @@ from dashboard.models import MuertesViolentas
 from dashboard.models import MuertesAccidentes
 from dashboard.models import MuertesAccidentales
 from dashboard.models import MuertesHomicidios
+from dashboard.models import MuertesSuicidios
 from django.contrib import messages
 
 # Create your views here.
@@ -14,11 +15,13 @@ def home(request):
     muertesAccidentes = MuertesAccidentes.objects.all()
     muertesAccidentales = MuertesAccidentales.objects.all()
     muertesHomicidios = MuertesHomicidios.objects.all()
+    muertesSuicidios = MuertesSuicidios.objects.all()
     messages.success(request, "¡Registros Cargados!")
     return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
                                          "muertesAccidentes" : muertesAccidentes,
                                         "muertesAccidentales" : muertesAccidentales,
-                                        "muertesHomicidios" : muertesHomicidios})
+                                        "muertesHomicidios" : muertesHomicidios,
+                                        "muertesSuicidios" : muertesSuicidios})
 
 def RegistrarMuertesViolentas(request):
     
@@ -221,4 +224,55 @@ def EliminarMuertesHomidicios(request, muertesHomicidio_id):
     muertesHomicidio.delete()
     
     messages.success(request, "Muerte homicidio eliminada!")
+    return redirect("/")
+#----------------------------------------------------------------------------------------------------
+
+def RegistrarMuertesSuicidios(request):
+    
+    if request.method == "POST":
+        tipoSuicidio = request.POST["tipo_suicidio"]
+        numeroVictimas = request.POST["numeros_victimas"]
+    
+        tipoSuicidio = MuertesSuicidios.objects.create(tipoSuicidio = tipoSuicidio, numeroVictimas = numeroVictimas)
+        messages.success(request, "¡Muerte suicidio registrada!")
+        return redirect("/")
+    else:
+        pass
+
+def VistaRegistrarMuertesSuicidios(request):
+
+    return render(request, "crear_muertes_suicidios.html")
+    
+def EditarMuertesSuicidios(request):
+    
+    if request.method == "POST":
+        muertesSuicidios_id =  request.POST["muertesSuicidios_id"]
+        tipoSuicidio = request.POST["tipo_suicidio"]
+        numeroVictimas = request.POST["numero_victimas"]
+
+        muerteSuicidio = MuertesSuicidios.objects.get(id = request.POST["muertesSuicidios_id"])        
+
+        muerteSuicidio.id = muertesSuicidios_id
+        muerteSuicidio.tipoSuicidio= tipoSuicidio
+        muerteSuicidio.numeroVictimas = numeroVictimas
+        
+        muerteSuicidio.save()   
+        
+        messages.success(request, "Muerte suicidio Actualizada!")
+        
+        return redirect('/')
+    else:
+        pass
+    
+def VistaEditarMuertesSuicidios(request, muertesSuicidios_id):
+    
+    muertesSuicidios = MuertesSuicidios.objects.get(id = muertesSuicidios_id)
+    return render(request, "editar_muertes_suicidios.html", {"muertesSuicidios" : muertesSuicidios})
+
+def EliminarMuertesSuicidios(request, muertesSuicidios_id):
+    
+    muerteSuicidio = MuertesSuicidios.objects.get(id = muertesSuicidios_id)
+    muerteSuicidio.delete()
+    
+    messages.success(request, "Muerte suicidio eliminada!")
     return redirect("/")

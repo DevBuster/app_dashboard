@@ -16,6 +16,6 @@ urlpatterns = [
     path('crear_muertes_accidentes', views.RegistrarMuertesAccidentes, name = "registrar muertes accidentes"),
     path('crear_muertes_accidentes/', views.VistaRegistrarMuertesAccidentes, name = "registrar muertes accidentes"),
     path('editar_muertes_accidentes/<int:muertesAccidentes_id>/', views.VistaEditarMuertesAccidentes, name = "editar muertes accidentes"),
-    path('editar_muertes_accidentes/', views.EditarMuertesViolentas, name = "editar muertes violentas"),
+    path('editar_muertes_accidentes/', views.EditarMuertesAccidentes, name = "editar muertes violentas"),
     path('eliminar_muertes_accidentes/<int:muertesAccidentes_id>', views.EliminarMuertesAccidentes, name = "eliminar muertes accidentes"),
 ]

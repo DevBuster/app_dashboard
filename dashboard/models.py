@@ -24,7 +24,7 @@ class MuertesAccidentes(models.Model):
     
     def __str__(self):
         texto = "{0} ({1})"
-        return texto.format(self.id, self.tipoMuerte, self.numeroVictimas)
+        return texto.format(self.id, self.tipoVehiculo, self.numeroVictimas)
 
 class MuertesAccidentales(models.Model):
     tipoAccidente = models.TextField(max_length = 100, null = False)
@@ -35,7 +35,7 @@ class MuertesAccidentales(models.Model):
     
     def __str__(self):
         texto = "{0} ({1})"
-        return texto.format(self.id, self.tipoMuerte, self.numeroVictimas)
+        return texto.format(self.id, self.tipoAccidente, self.numeroVictimas)
     
 class MuertesHomicidios(models.Model):
     tipoHomicidio = models.TextField(max_length = 100, null = False)
@@ -46,7 +46,7 @@ class MuertesHomicidios(models.Model):
     
     def __str__(self):
         texto = "{0} ({1})"
-        return texto.format(self.id, self.tipoMuerte, self.numeroVictimas)
+        return texto.format(self.id, self.tipoHomicidio, self.numeroVictimas)
 
 class MuertesSuicidios(models.Model):
     tipoSuicidio = models.TextField(max_length = 100, null = False)
@@ -57,4 +57,4 @@ class MuertesSuicidios(models.Model):
     
     def __str__(self):
         texto = "{0} ({1})"
-        return texto.format(self.id, self.tipoMuerte, self.numeroVictimas)
+        return texto.format(self.id, self.tipoSuicidio, self.numeroVictimas)

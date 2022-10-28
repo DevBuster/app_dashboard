@@ -161,6 +161,50 @@
                     </div>
                 </div>
             </div>
+            <!--#####################################################################################-->
+           <div class="shadow-lg bg-body rounded">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Muertes homicidio</h3
+                    <div class="table-responsive py-2">
+                        
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TIPO DE HOMICIDIO</th>
+                                    <th>NUMERO DE VICTIMAS</th>
+                                    <th>OPCIONES</th>
+                                </tr>
+                            </thead>
+        
+                            <tbody>
+                                <tr>
+                                    {% for i in muertesHomicidios %}
+                                </tr>
+                                    <td>{{i.id}}</td>
+                                    <td>{{i.tipoHomicidio}}</td>
+                                    <td>{{i.numeroVictimas}}</td>
+                                    <td>
+                                        
+                                    <a href="editar_muertes_homicidio/{{i.id}}" class="btn btn-outline-primary" 
+                                    title="Editar">Editar</a>
+
+                                    <a href="eliminar_muertes_homicidio/{{i.id}}"  
+                                    class="btn btn-outline-danger btn_eliminar_contactos" 
+                                    title="Eliminar">Eliminar</a>
+                                </td>                                        
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="text-align: center; margin-botton: 10px;margin-bottom: 20px;">
+                        <a href="crear_muertes_homicidio/" class="btn btn-outline-success"
+                        title="Crear">registrar muerte accidente</a>
+                    </div>
+                </div>
+            </div>
         </div> 
         </div>
     </div> 

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from dashboard.models import MuertesViolentas
 from dashboard.models import MuertesAccidentes
 from dashboard.models import MuertesAccidentales
+from dashboard.models import MuertesHomicidios
 from django.contrib import messages
 
 # Create your views here.
@@ -12,10 +13,12 @@ def home(request):
     muertesViolentas = MuertesViolentas.objects.all()
     muertesAccidentes = MuertesAccidentes.objects.all()
     muertesAccidentales = MuertesAccidentales.objects.all()
+    muertesHomicidios = MuertesHomicidios.objects.all()
     messages.success(request, "¡Registros Cargados!")
     return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
                                          "muertesAccidentes" : muertesAccidentes,
-                                        "muertesAccidentales" : muertesAccidentales})
+                                        "muertesAccidentales" : muertesAccidentales,
+                                        "muertesHomicidios" : muertesHomicidios})
 
 def RegistrarMuertesViolentas(request):
     
@@ -167,4 +170,55 @@ def EliminarMuertesAccidentes(request, muertesAccidentales_id):
     muertesAccidentales.delete()
     
     messages.success(request, "Muerte accidentales eliminada!")
+    return redirect("/")
+#----------------------------------------------------------------------------------------------------
+
+def RegistrarMuertesHomicidios(request):
+    
+    if request.method == "POST":
+        tipoHomicidio = request.POST["tipo_homicidio"]
+        numeroVictimas = request.POST["numeros_victimas"]
+    
+        muertesHomicidio = MuertesHomicidios.objects.create(tipoHomicidio = tipoHomicidio, numeroVictimas = numeroVictimas)
+        messages.success(request, "¡Muerte homicidio registrada!")
+        return redirect("/")
+    else:
+        pass
+
+def VistaRegistrarMuertesHomicidios(request):
+
+    return render(request, "crear_muertes_homicidio.html")
+    
+def EditarMuertesHomicidios(request):
+    
+    if request.method == "POST":
+        muertesHomicidio_id =  request.POST["muertesHomicidio_id"]
+        tipoHomicidio = request.POST["tipo_homicidio"]
+        numeroVictimas = request.POST["numero_victimas"]
+
+        muertesHomicidio = MuertesHomicidios.objects.get(id = request.POST["muertesHomicidio_id"])        
+
+        muertesHomicidio.id = muertesHomicidio_id
+        muertesHomicidio.tipoHomicidio = tipoHomicidio
+        muertesHomicidio.numeroVictimas = numeroVictimas
+        
+        muertesHomicidio.save()   
+        
+        messages.success(request, "Muerte homicidio Actualizada!")
+        
+        return redirect('/')
+    else:
+        pass
+    
+def VistaEditarMuertesHomidicios(request, muertesHomicidio_id):
+    
+    muertesHomicidio = MuertesHomicidios.objects.get(id = muertesHomicidio_id)
+    return render(request, "editar_muertes_homicidio.html", {"muertesHomicidio" : muertesHomicidio})
+
+def EliminarMuertesHomidicios(request, muertesHomicidio_id):
+    
+    muertesHomicidio = MuertesHomicidios.objects.get(id = muertesHomicidio_id)
+    muertesHomicidio.delete()
+    
+    messages.success(request, "Muerte homicidio eliminada!")
     return redirect("/")

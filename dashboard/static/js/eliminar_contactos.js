@@ -1,9 +1,42 @@
 const btn_eliminar_contactos = document.querySelectorAll(".btn_eliminar_contactos");
+const btn_crear_contactos = document.querySelectorAll(".btn_guardar_contactos");
+const btn_actualizar_contactos = document.querySelectorAll(".btn_actualizar_contactos");
 
 (function () {
 
     // notificacionSwal("LoadQuery", "Registros cargados con exito", "success", "Ok");
 
+    btn_crear_contactos.forEach(btn => {
+        btn.addEventListener('click', function () {
+            Swal.fire({
+                titleText: "REGISTRO CREADO",
+                text: "Nice!!",
+                icon: "success", // warnign, error, success, info
+                confirmButtonColor: "green",
+                backdrop: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: "Nice!",
+                allowOutsideClick: () => false,
+                allowEscapeKey: () => false,
+            })
+        })
+    });
+
+    btn_actualizar_contactos.forEach(btn => {
+        btn.addEventListener('click', function () {
+            Swal.fire({
+                titleText: "REGISTRO ACTUALIZADO",
+                text: "Nice!!",
+                icon: "success", // warnign, error, success, info
+                confirmButtonColor: "green",
+                backdrop: true,
+                showLoaderOnConfirm: true,
+                confirmButtonText: "Nice!",
+                allowOutsideClick: () => false,
+                allowEscapeKey: () => false,
+            })
+        })
+    });
 
     btn_eliminar_contactos.forEach(btn => {
         btn.addEventListener('click', function (e) {

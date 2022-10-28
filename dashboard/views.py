@@ -111,5 +111,5 @@ def EliminarMuertesAccidentes(request, muertesAccidentes_id):
     muertesAccidentes = MuertesAccidentes.objects.get(id = muertesAccidentes_id)
     muertesAccidentes.delete()
     
-    messages.success(request, "Muerte Violenta eliminada!")
+    messages.success(request, "Muerte accidente eliminada!")
     return redirect("/")

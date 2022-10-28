@@ -21,10 +21,16 @@
   <link rel="stylesheet" href="{% static 'css/tablas.css' %}" />
 
   <!-- JAVASCRIPT -->
-  <script type="text/javascript" src="{% static "/resources/bootstrap/js/bootstrap.min.js" %}"></script>  
+  <script  src="{% static "/resources/bootstrap/js/bootstrap.min.js" %}"></script>
+
   
   <!-- CUSTOM JAVASCRIPT -->
-  <script type="text/javascript" src="{% static 'js/eliminar_contactos.js' %}" defer></script>
+  <script src="{% static 'js/eliminar_contactos.js' %}" defer></script>
+
+ <!--sweet alert 2-->
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <script src="{% static 'js/notificacionSwal.js' %}"></script>
 
   <title>{% block title %} {% endblock %}</title>
 </head>

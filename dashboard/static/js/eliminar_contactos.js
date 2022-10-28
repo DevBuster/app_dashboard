@@ -4,6 +4,7 @@ const btn_eliminar_contactos = document.querySelectorAll(".btn_eliminar_contacto
 
     // notificacionSwal("LoadQuery", "Registros cargados con exito", "success", "Ok");
 
+
     btn_eliminar_contactos.forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
@@ -12,10 +13,12 @@ const btn_eliminar_contactos = document.querySelectorAll(".btn_eliminar_contacto
                 text: "¿Segur@ que quiere eliminar este registro?",
                 icon: "warning", // warnign, error, success, info
                 showCancelButton: true,
-                confirmButtonColor: "#d33",
+                confirmButtonColor: "green",
+                cancelButtonColor: "red",
                 backdrop: true,
                 showLoaderOnConfirm: true,
-                confirmButtonText: "OK",
+                confirmButtonText: "Confirmar",
+                cancelButtonText: "Cancelar",
                 preConfirm: () => {
                     location.href = e.target.href;
                 },

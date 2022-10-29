@@ -151,7 +151,7 @@ def EditarMuertesAccidentales(request):
         muertesAccidentales = MuertesAccidentales.objects.get(id = request.POST["muertesAccidentales_id"])        
 
         muertesAccidentales.id = muertesAccidentales_id
-        muertesAccidentales.tipoVehiculo = tipoAccidente
+        muertesAccidentales.tipoAccidente = tipoAccidente
         muertesAccidentales.numeroVictimas = numeroVictimas
         
         muertesAccidentales.save()   

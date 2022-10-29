@@ -1,6 +1,6 @@
 <!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
 {% extends "./base.html" %} 
-
+{% load static %}
 {% block title %}Dashboard - inicio{% endblock %}
 
 {% block section %}
@@ -383,4 +383,20 @@
             </div>
         </div>
     </div> 
+
+    <div class="custom">
+        <div class="customCard">
+            <div class="blob"></div>
+                <span class="img"><img src="{% static 'img/DevBuster.jpg' %}" width="120px" height="120px" style="border-radius: 20px;margin-top: 15px;"></img></span>
+                <h2 class="customH2" style="margin-top: 30px;">DevBuster</h2>
+                <p>
+                    <a class="text-muted" href="https://github.com/DevBuster/app_dashboard" target="_blank">
+                        <img src="{% static 'resources/bootstrap/icons/github.svg' %}" alt="GitHub" width="32" height="32" title="GitHub">
+                        </img>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

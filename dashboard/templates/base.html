@@ -156,10 +156,41 @@
     var chartMuertesAccidentales = new Chart(ctxAccidentales, {
         type: 'bar',
         data:{
-            labels: ['mazda', 'tesla', 'ferrari'],
+            labels: ['deporte', 'laboral', 'recreacion'],
             datasets: [{
-              label: 'accidentes',
+              label: 'accidentales',
                 data: [25, 10, 25],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    })
+
+    var ctxHomicidios = document.getElementById('chartMuertesHomicidios').getContext('2d');
+    var chartMuertesHomicidios = new Chart(ctxHomicidios, {
+        type: 'bar',
+        data:{
+            labels: ['casual', 'sicariato', 'venganza'],
+            datasets: [{
+              label: 'accidentales',
+                data: [20, 15, 20],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',

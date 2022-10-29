@@ -1,7 +1,7 @@
 <!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
 {% extends "./base.html" %} 
 
-{% block title %}EDITAR MUERTES VIOLENTAS{% endblock %}
+{% block title %}Muertes violentas - Editar{% endblock %}
 
 {% block body %}
 <div class="row justify-content-center">
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h2 class="lead" style="text-align: center">EDITAR MUERTES VIOLENTAS</h2>
+                    <h2 class="lead" style="text-align: center; margin-bottom: 1.5rem;">EDITAR MUERTES VIOLENTAS</h2>
 
                     <form action="/editar_muertes_violentas/" method="POST">
     
@@ -24,13 +24,13 @@
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="text" class="form-control" name="tipo_muerte" id="tipo_muerte" placeholder="tipo"
                             maxlength="100" value="{{muertesViolentas.tipoMuerte}}" required>
-                            <label for="tipo_muerte">tipo de muerte</label>
+                            <label for="tipo_muerte">TPO DE MUERTE</label>
                         </div>
 
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="text" class="form-control" name="numero_victimas" id="numero_victimas" placeholder="victimas"
                             maxlength="100" value="{{muertesViolentas.numeroVictimas}}" required>
-                            <label for="numero_victimas">numero de victimas</label>
+                            <label for="numero_victimas">NUMERO DE VICTIMAS</label>
                         </div>
 
                         <div class="form-group" style="text-align: center">

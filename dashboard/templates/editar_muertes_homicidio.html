@@ -1,7 +1,7 @@
 <!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
 {% extends "./base.html" %} 
 
-{% block title %}EDITAR MUERTES HOMICIDIO{% endblock %}
+{% block title %}Homicidios - Editar{% endblock %}
 
 {% block body %}
 <div class="row justify-content-center">
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h2 class="lead" style="text-align: center">EDITAR MUERTES HOMICIDIO</h2>
+                    <h2 class="lead" style="text-align: center; margin-bottom: 1.5rem;">EDITAR HOMICIDIO</h2>
 
                     <form action="/editar_muertes_homicidio/" method="POST">
     
@@ -24,17 +24,17 @@
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="text" class="form-control" name="tipo_homicidio" id="tipo_homicidio" placeholder="tipo de homicidio"
                             maxlength="100" value="{{muertesHomicidio.tipoHomicidio}}" required>
-                            <label for="tipo_muerte">tipo de muerte</label>
+                            <label for="tipo_muerte">TIPO DE HOMICIDIO</label>
                         </div>
 
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="text" class="form-control" name="numero_victimas" id="numero_victimas" placeholder="victimas"
                             maxlength="100" value="{{muertesHomicidio.numeroVictimas}}" required>
-                            <label for="numero_victimas">numero de victimas</label>
+                            <label for="numero_victimas">NUMERO DE VICTIMAS</label>
                         </div>
 
                         <div class="form-group" style="text-align: center">
-                            <button type="submit" class="btn btn-success btn-block text-white btn_actualizar_registro" title="Actualizar">Actualizar</button>
+                            <button type="submit" class="btn btn-success btn-block text-white btn_actualizar_registro" title="Guardar">Guardar</button>
                             <a href="/" class="btn btn-danger" title="Cancelar">Cancelar</a></td>
                         </div>
                         

@@ -167,7 +167,7 @@ def VistaEditarMuertesAccidentales(request, muertesAccidentales_id):
     muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
     return render(request, "editar_muertes_accidentales.html", {"muertesAccidentales" : muertesAccidentales})
 
-def EliminarMuertesAccidentes(request, muertesAccidentales_id):
+def EliminarMuertesAccidentales(request, muertesAccidentales_id):
     
     muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
     muertesAccidentales.delete()

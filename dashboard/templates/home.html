@@ -142,6 +142,11 @@
                                     <div style="text-align: center; margin-botton: 10px;margin-bottom: 20px;">
                                         <a href="registrar_muertes_violentas/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
+
+                                            <!--modal grafica-->
+                                        <button type="button" class="btn btn-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarra">
+                                            Generar grafica
+                                        </button>
                                     </div>
                                 </div>
                                 {% comment %} <div>
@@ -383,7 +388,7 @@
             </div>
         </div>
 
-    <!-- Modal -->
+    <!-- Modal integrante-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -420,5 +425,22 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalGraficaBarra" tabindex="-1" aria-labelledby="modalGraficaBarraLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraLabel">Grafica de barra sobre <b>muertes violentas</b></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <canvas id="chartMuertesViolentas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
 </div> 
 {% endblock %}

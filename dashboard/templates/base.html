@@ -103,8 +103,8 @@
     </div>
 
     <script type="text/javascript">
-      {% comment %} var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
-    var chartMuertesViolentas = new Chart(ctxViolentas, {
+      var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
+      var chartMuertesViolentas = new Chart(ctxViolentas, {
         type: 'bar',
         data:{
             labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
@@ -134,7 +134,7 @@
         },
     })
 
-    var ctxAccidentes = document.getElementById('chartMuertesAccidentes').getContext('2d');
+    {% comment %} var ctxAccidentes = document.getElementById('chartMuertesAccidentes').getContext('2d');
     var chartMuertesAccidentes = new Chart(ctxAccidentes, {
         type: 'bar',
         data:{

@@ -73,7 +73,7 @@
     </div>
 
     <div class="container">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 border-top">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 border-top" style="margin-top: 3.5rem;">
 
         <div class="col-md-4 d-flex align-items-center">
           <img style="margin-right: 5px;" src="{% static 'resources/bootstrap/icons/c-circle.svg' %}" alt="CopyRight" title="CopyRight">
@@ -89,7 +89,7 @@
     </div>
 
     <script type="text/javascript">
-      var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
+      {% comment %} var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
     var chartMuertesViolentas = new Chart(ctxViolentas, {
         type: 'bar',
         data:{
@@ -242,7 +242,7 @@
                 borderWidth: 1
             }]
         },
-    })
+    }) {% endcomment %}
 
     var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
     var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {

@@ -4,6 +4,13 @@ const btn_actualizar_registro = document.querySelectorAll(".btn_actualizar_regis
 
 (function () {
 
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      });
     // notificacionSwal("LoadQuery", "Registros cargados con exito", "success", "Ok");
 
     btn_guardar_registro.forEach(btn => {
@@ -63,6 +70,15 @@ const btn_actualizar_registro = document.querySelectorAll(".btn_actualizar_regis
                         'Registro eliminado!',
                         'Nice!.',
                         'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Eliminación cancelada',
+                        'Su registro está intacto :)',
+                        'error'
                     )
                 }
             })

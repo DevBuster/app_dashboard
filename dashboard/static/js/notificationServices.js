@@ -57,6 +57,14 @@ const btn_actualizar_registro = document.querySelectorAll(".btn_actualizar_regis
                 },
                 allowOutsideClick: () => false,
                 allowEscapeKey: () => false,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Registro eliminado!',
+                        'Nice!.',
+                        'success'
+                    )
+                }
             })
         })
     });

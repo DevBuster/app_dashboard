@@ -1,7 +1,7 @@
 <!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
 {% extends "./base.html" %} 
 
-{% block title %}CREAR REGISTRO{% endblock %}
+{% block title %}Homicidios - Registrar{% endblock %}
 
 {% block body %}
 <div class="row justify-content-center">
@@ -9,7 +9,7 @@
         <div class="shadow-lg bg-body rounded">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="lead" style="text-align: center">REGISTRAR</h2>
+                    <h2 class="lead" style="text-align: center; margin-bottom: 1.5rem;">REGISTRAR HOMICIDIO</h2>
                     <form action="/crear_muertes_homicidio" method="POST">
     
                         {% csrf_token %}
@@ -17,16 +17,16 @@
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="text" class="form-control" name="tipo_homicidio" id="tipo_homicidio" placeholder="tipo de homicidio"
                             maxlength="100" value="{{muertesHomicidio.tipoHomicidio}}" required>
-                            <label for="input-muertes-violentas">Tipo de homicidio</label>
+                            <label for="input-muertes-violentas">TIPO DE HOMICIDIO</label>
                         </div>
 
                         <div class="form-floating mb-3"  style="margin-bottom: 5%">
                             <input type="number" class="form-control" name="numeros_victimas" id="numeros_victimas" placeholder="numero victima"
                             maxlength="100" value="{{muertesHomicidio.numeroVictimas}}" required>
-                            <label for="input-numero-victimas">numero de victimas</label>
+                            <label for="input-numero-victimas">NUMERO DE VICTIMAS</label>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 0px; text-align: center">
+                        <div class="form-group" style="margin-bottom: 0px; text-align: center; margin-top: 1.5rem;">
                             <button id="toastbtn" type="submit" class="btn btn-success btn-block text-white btn_guardar_registro" title="Guardar">Guardar</button>
                             <button type="reset" class="btn btn-warning btn-block text-white" title="Limpiar">Limpiar</button>
                             <a href="/" class="btn btn-danger" title="Cancelar">Cancelar</a></td>

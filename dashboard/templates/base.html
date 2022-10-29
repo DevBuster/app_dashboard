@@ -48,7 +48,7 @@
         <img src="/static/icons/android-chrome-192x192.png/" alt="Logo de la pagina" width="32" height="32"
           title="Logo"></img>
 
-        <a class="navbar-brand lead" style="margin-left: 16px;" href="/">Sistema de Metricas</a>
+        <a class="navbar-brand lead" style="margin-left: 16px;" href="/">Dashboard</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,8 +90,8 @@
     </div>
 
     <script type="text/javascript">
-      var ctx = document.getElementById('chartMuertesViolentas').getContext('2d');
-    var myChart = new Chart(ctx, {
+      var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
+    var chartMuertesViolentas = new Chart(ctxViolentas, {
         type: 'bar',
         data:{
             labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
@@ -119,15 +119,68 @@
                 borderWidth: 1
             }]
         },
-        options: {
-          scales:{
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
+    })
+
+    var ctxAccidentes = document.getElementById('chartMuertesAccidentes').getContext('2d');
+    var chartMuertesAccidentes = new Chart(ctxAccidentes, {
+        type: 'bar',
+        data:{
+            labels: ['mazda', 'tesla', 'ferrari'],
+            datasets: [{
+              label: 'accidentes',
+                data: [25, 10, 25],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
             }]
-          }
-        }
+        },
+    })
+
+    var ctxAccidentales = document.getElementById('chartMuertesAccidentales').getContext('2d');
+    var chartMuertesAccidentales = new Chart(ctxAccidentales, {
+        type: 'bar',
+        data:{
+            labels: ['mazda', 'tesla', 'ferrari'],
+            datasets: [{
+              label: 'accidentes',
+                data: [25, 10, 25],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
     })
     </script>
   </body>

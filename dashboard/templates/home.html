@@ -1,7 +1,7 @@
 <!-- HEREDAMOS EL LAYOUT DEL FICHERO BASE.HTML -->
 {% extends "./base.html" %} 
 
-{% block title %}INICIO{% endblock %}
+{% block title %}Dashboard - inicio{% endblock %}
 
 {% block body %}    
     <div class="py-5">
@@ -79,9 +79,9 @@
                                         title="Crear">registrar muerte violenta</a>
                                     </div>
                                 </div>
-                                <div>
-                                    <canvas id="chartMuertesViolentas"></canvas>
-                                  </div>
+                                    <div>
+                                        <canvas id="chartMuertesViolentas"></canvas>
+                                    </div>
                                   
                             </div>
                         </div>
@@ -136,6 +136,9 @@
                                         <a href="crear_muertes_accidentes/" class="btn btn-outline-success"
                                         title="Crear">registrar muerte accidente</a>
                                     </div>
+                                </div>
+                                <div>
+                                    <canvas id="chartMuertesAccidentes"></canvas>
                                 </div>
                             </div>
                     </div>

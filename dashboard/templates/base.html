@@ -19,6 +19,7 @@
 
   <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="{% static 'css/tablas.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
 
   <!-- JAVASCRIPT -->
   <script  src="{% static "/resources/bootstrap/js/bootstrap.min.js" %}"></script>
@@ -125,10 +126,10 @@
     var chartMuertesAccidentes = new Chart(ctxAccidentes, {
         type: 'bar',
         data:{
-            labels: ['mazda', 'tesla', 'ferrari'],
+            labels: ['mazda', 'tesla', 'ferrari', 'chevrolet'],
             datasets: [{
               label: 'mazda',
-                data: [25, 10, 25],
+                data: [25, 10, 25, 20],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -216,12 +217,105 @@
 
     var ctxSuicidios = document.getElementById('chartMuertesSuicidios').getContext('2d');
     var chartMuertesSuicidios = new Chart(ctxSuicidios, {
-        type: 'bar',
+        type: 'pie',
         data:{
             labels: ['grito de ayuda', 'finalidad de muerte', 'finalidad de huida'],
             datasets: [{
               label: 'grito de ayuda',
                 data: [20, 20, 25],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    })
+
+    var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
+    var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {
+        type: 'pie',
+        data:{
+            labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
+            datasets: [{
+              label: 'accidentes',
+                data: [24, 13, 20, 40],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    })
+
+    var ctxPieAccidentes = document.getElementById('chartPieMuertesAccidentes').getContext('2d');
+    var chartPieMuertesAccidentes = new Chart(ctxPieAccidentes, {
+        type: 'pie',
+        data:{
+            labels: ['mazda', 'tesla', 'ferrari', 'chevrolet'],
+            datasets: [{
+              label: 'mazda',
+                data: [25, 10, 25, 20],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    })
+
+    var ctxPieAccidentales = document.getElementById('chartPieMuertesAccidentales').getContext('2d');
+    var chartPieMuertesAccidentales = new Chart(ctxPieAccidentales, {
+        type: 'pie',
+        data:{
+            labels: ['deporte', 'laboral', 'recreacion'],
+            datasets: [{
+              label: 'deporte',
+                data: [25, 10, 25],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',

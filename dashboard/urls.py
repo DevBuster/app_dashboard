@@ -1,39 +1,19 @@
-"""
-dasboard URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
 # FICHERO DE RUTAS EXCLUSIVAMENTE DE LA APLICACION, NO DEL PROYECTO
 
 from django.urls import path
-# from . import viewsdos
+from . import views
 from dashboard.views import Dashboard
-from dashboard.views import ModelCreateViewMuertesViolentas
-from dashboard.views import ModelUpdateViewMuertesViolentas
-from dashboard.views import ModelDeleteViewMuertesViolentas
 
 
 app_name = "dashboard"
 
 urlpatterns = [
     path('', Dashboard.as_view(), name = "home"),
-    path('registrar_muertes_violentas', ModelCreateViewMuertesViolentas.RegistrarMuertesViolentas, name = "registrar muertes violentas"),
-    path('registrar_muertes_violentas/', ModelCreateViewMuertesViolentas.VistaRegistrarMuertesViolentas, name = "registrar muertes violentas"),
-    path('editar_muertes_violentas/<int:muertesViolentas_id>/', ModelUpdateViewMuertesViolentas.VistaEditarMuertesViolentas, name = "editar muertes violentas"),
-    path('editar_muertes_violentas/', ModelUpdateViewMuertesViolentas.EditarMuertesViolentas, name = "editar muertes violentas"),
-    path('eliminar_muertes_violentas/<int:muertesViolentas_id>', ModelDeleteViewMuertesViolentas.get_context_data, name = "eliminar muertes violentas"),
+    # path('registrar_muertes_violentas', views.RegistrarMuertesViolentas, name = "registrar muertes violentas"),
+    # path('registrar_muertes_violentas/', views.VistaRegistrarMuertesViolentas, name = "registrar muertes violentas"),
+    # path('editar_muertes_violentas/<int:muertesViolentas_id>/', views.VistaEditarMuertesViolentas, name = "editar muertes violentas"),
+    # path('editar_muertes_violentas/', views.EditarMuertesViolentas, name = "editar muertes violentas"),
+    # path('eliminar_muertes_violentas/<int:muertesViolentas_id>', views.EliminarMuertesViolentas, name = "eliminar muertes violentas"),
     # #--------------------------------------------------------------------------------------------------------------------------------#
     # path('crear_muertes_accidentes', views.RegistrarMuertesAccidentes, name = "registrar muertes accidentes"),
     # path('crear_muertes_accidentes/', views.VistaRegistrarMuertesAccidentes, name = "registrar muertes accidentes"),

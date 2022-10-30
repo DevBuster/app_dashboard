@@ -3,10 +3,6 @@ const btn_guardar_registro = document.querySelectorAll(".btn_guardar_registro");
 const btn_actualizar_registro = document.querySelectorAll(".btn_actualizar_registro");
 const btn_generar_grafica = document.querySelectorAll(".btn_generar_grafica");
 
-
-let modalGraficaBarra = document.getElementById('modalGraficaBarra');
-modalGraficaBarra.style.display = 'none';
-
 (function () {
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -128,11 +124,15 @@ modalGraficaBarra.style.display = 'none';
             }).then((result) => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    modalGraficaBarra.style.display = 'block';
+                    Swal.fire(
+                        'Grafica generada',
+                        'Nice!',
+                        'success'
+                    )
                 }
             })
-        })
-    });
+        });
+    })
 
     // ------- ACCION DEL BOTON "ELIMINAR" CONTACTOS ------- //
     // const btn_eliminar_contactos = document.querySelectorAll(".btn_eliminar_contactos");

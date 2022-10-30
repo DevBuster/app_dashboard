@@ -16,8 +16,9 @@ def home(request):
         labels.append(objeto.tipoMuerte)
         data.append(objeto.numeroVictimas)
     return render(request, "home.html", {
-        'labels':labels,
-        'data':data
+        'labels' : labels,
+        'data' : data,
+        'muertesViolentas' : queryset
     })
     
     # muertesViolentas = MuertesViolentas.objects.all()

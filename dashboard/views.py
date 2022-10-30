@@ -11,14 +11,14 @@ def home(request):
     labels = []
     data = []
     
-    queryset = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
-    for objeto in queryset:
+    muertesViolentas = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
+    for objeto in muertesViolentas:
         labels.append(objeto.tipoMuerte)
         data.append(objeto.numeroVictimas)
     return render(request, "home.html", {
         'labels' : labels,
         'data' : data,
-        'muertesViolentas' : queryset
+        'muertesViolentas' : muertesViolentas
     })
     
     # muertesViolentas = MuertesViolentas.objects.all()

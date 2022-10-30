@@ -11,7 +11,7 @@ def home(request):
     labels = []
     data = []
     
-    queryset = MuertesViolentas.objects.all().order_by('numeroVictimas')[:5]
+    queryset = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
     for objeto in queryset:
         labels.append(objeto.tipoMuerte)
         data.append(objeto.numeroVictimas)

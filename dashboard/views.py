@@ -12,14 +12,23 @@ def home(request):
     data = []
     
     muertesViolentas = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
+    muertesAccidentes = MuertesAccidentes.objects.all().order_by('numeroVictimas')[:20]
+    muertesAccidentales = MuertesAccidentales.objects.all().order_by('numeroVictimas')[:20]
+    muertesHomicidios = MuertesHomicidios.objects.all().order_by('numeroVictimas')[:20]
+    muertesSuicidios = MuertesSuicidios.objects.all().order_by('numeroVictimas')[:20]
+    
     for objeto in muertesViolentas:
         labels.append(objeto.tipoMuerte)
         data.append(objeto.numeroVictimas)
+        
     return render(request, "home.html", {
         'labels' : labels,
         'data' : data,
-        'muertesViolentas' : muertesViolentas
-    })
+        'muertesViolentas' : muertesViolentas,
+        "muertesAccidentes" : muertesAccidentes,
+        "muertesAccidentales" : muertesAccidentales,
+        "muertesHomicidios" : muertesHomicidios,
+        "muertesSuicidios" : muertesSuicidios })
     
     # muertesViolentas = MuertesViolentas.objects.all()
     # muertesAccidentes = MuertesAccidentes.objects.all()

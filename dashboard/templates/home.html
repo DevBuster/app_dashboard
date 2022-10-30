@@ -144,8 +144,8 @@
                                         title="Crear">Registrar</a>
 
                                             <!--modal grafica-->
-                                        <button type="button" id="btn_generar" class="btn btn-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarra">
-                                            Generar grafica
+                                        <button type="button" id="btn_generar" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarra">
+                                            Graficar
                                         </button>
                                     </div>
                                 </div>
@@ -426,8 +426,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalGraficaBarra" tabindex="-1" aria-labelledby="modalGraficaBarraLabel" aria-hidden="true">
+    <!-- Modal gradica de barra -->
+    {% comment %} <div class="modal fade" id="modalGraficaBarra" tabindex="-1" aria-labelledby="modalGraficaBarraLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -441,6 +441,20 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div> {% endcomment %}
+
+    <div class="modal fade" id="modalGraficaBarra" aria-hidden="true" aria-labelledby="modalGraficaBarraToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                {% comment %} <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Modal 1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> {% endcomment %}
+                <div class="modal-body">
+                    <canvas id="chartBarMuertesViolentas" style="position: relative; height:40vh; width:80vw"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> 
 {% endblock %}

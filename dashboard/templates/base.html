@@ -103,8 +103,8 @@
     </div>
 
     <script type="text/javascript">
-      var ctxViolentas = document.getElementById('chartMuertesViolentas').getContext('2d');
-      var chartMuertesViolentas = new Chart(ctxViolentas, {
+      var ctxBarViolentas = document.getElementById('chartBarMuertesViolentas').getContext('2d');
+      var chartBarMuertesViolentas = new Chart(ctxBarViolentas, {
         type: 'bar',
         data:{
             labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
@@ -132,7 +132,7 @@
                 borderWidth: 1
             }]
         },
-    })
+    });
 
     {% comment %} var ctxAccidentes = document.getElementById('chartMuertesAccidentes').getContext('2d');
     var chartMuertesAccidentes = new Chart(ctxAccidentes, {

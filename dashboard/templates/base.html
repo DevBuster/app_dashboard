@@ -134,8 +134,8 @@
         },
     });
 
-    {% comment %} var ctxAccidentes = document.getElementById('chartMuertesAccidentes').getContext('2d');
-    var chartMuertesAccidentes = new Chart(ctxAccidentes, {
+    var ctxBarAccidentes = document.getElementById('chartBarMuertesAccidentes').getContext('2d');
+    var chartBarMuertesAccidentes = new Chart(ctxBarAccidentes, {
         type: 'bar',
         data:{
             labels: ['mazda', 'tesla', 'ferrari', 'chevrolet'],
@@ -165,7 +165,7 @@
         },
     })
 
-    var ctxAccidentales = document.getElementById('chartMuertesAccidentales').getContext('2d');
+    {% comment %} var ctxAccidentales = document.getElementById('chartMuertesAccidentales').getContext('2d');
     var chartMuertesAccidentales = new Chart(ctxAccidentales, {
         type: 'bar',
         data:{

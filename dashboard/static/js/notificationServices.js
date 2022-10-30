@@ -102,13 +102,13 @@ const btn_generar_grafica = document.querySelectorAll(".btn_generar_grafica");
         })
     });
 
-    // generar grafica de barra
+    // generar grafica de barra (simulacion, no es real D: )
     btn_generar_grafica.forEach(btn => {
         btn.addEventListener('click', function () {
             let timerInterval
             Swal.fire({
                 title: 'Grafica de barra!',
-                html: 'Generando grafica de barra...<b></b> milliseconds.',
+                html: 'Generando grafica de barra...<b></b>s restantes.',
                 timer: 2000,
                 timerProgressBar: true,
                 didOpen: () => {

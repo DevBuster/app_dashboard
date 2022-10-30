@@ -261,14 +261,17 @@
         },
     });
 
+    var dfPieLabelsViolentas = {{labels|safe}};
+    var dfPieDataViolentas = {{data|safe}};
+
     var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
     var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {
         type: 'pie',
         data:{
-            labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
+            labels: dfPieLabelsViolentas,
             datasets: [{
               label: 'accidentes',
-                data: [24, 13, 20, 40],
+                data: dfPieDataViolentas,
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',

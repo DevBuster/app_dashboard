@@ -7,7 +7,6 @@ from django.views.generic import TemplateView
 # Create your views here.
 
 class Dashboard(TemplateView):
-    
     template_name = 'home.html'
     
     def get_context_data(self, **kwargs):
@@ -55,7 +54,6 @@ class Dashboard(TemplateView):
     #     #                                     "muertesSuicidios" : muertesSuicidios})
 
     def RegistrarMuertesViolentas(request):
-        
         if request.method == "POST":
             tipoMuerte = request.POST["tipo_muerte"]
             numeroVictimas = request.POST["numeros_victimas"]
@@ -65,7 +63,6 @@ class Dashboard(TemplateView):
             return redirect("/")
         else:
             pass
-
     def VistaRegistrarMuertesViolentas(request):
 
         return render(request, "registrar_muertes_violentas.html")
@@ -106,7 +103,6 @@ class Dashboard(TemplateView):
     #----------------------------------------------------------------------------------------------------
 
     def RegistrarMuertesAccidentes(request):
-        
         if request.method == "POST":
             tipoVehiculo = request.POST["tipo_vehiculo"]
             numeroVictimas = request.POST["numeros_victimas"]
@@ -116,39 +112,29 @@ class Dashboard(TemplateView):
             return redirect("/")
         else:
             pass
-
     def VistaRegistrarMuertesAccidentes(request):
-
         return render(request, "crear_muertes_accidentes.html")
-        
     def EditarMuertesAccidentes(request):
-        
         if request.method == "POST":
             muertesAccidentes_id =  request.POST["muertesAccidentes_id"]
             tipoVehiculo = request.POST["tipo_vehiculo"]
             numeroVictimas = request.POST["numero_victimas"]
 
             muertesAccidentes = MuertesAccidentes.objects.get(id = request.POST["muertesAccidentes_id"])        
-
             muertesAccidentes.id = muertesAccidentes_id
             muertesAccidentes.tipoVehiculo = tipoVehiculo
             muertesAccidentes.numeroVictimas = numeroVictimas
             
             muertesAccidentes.save()   
-            
             messages.success(request, "Muerte accidente Actualizada!")
             
             return redirect('/')
         else:
-            pass
-        
+            pass        
     def VistaEditarMuertesAccidentes(request, muertesAccidentes_id):
-        
         muertesAccidentes = MuertesAccidentes.objects.get(id = muertesAccidentes_id)
         return render(request, "editar_muertes_accidentes.html", {"muertesAccidentes" : muertesAccidentes})
-
     def EliminarMuertesAccidentes(request, muertesAccidentes_id):
-        
         muertesAccidentes = MuertesAccidentes.objects.get(id = muertesAccidentes_id)
         muertesAccidentes.delete()
         
@@ -157,7 +143,6 @@ class Dashboard(TemplateView):
     #----------------------------------------------------------------------------------------------------
 
     def RegistrarMuertesAccidentales(request):
-        
         if request.method == "POST":
             tipoAccidente = request.POST["tipo_accidente"]
             numeroVictimas = request.POST["numeros_victimas"]
@@ -167,11 +152,9 @@ class Dashboard(TemplateView):
             return redirect("/")
         else:
             pass
-
     def VistaRegistrarMuertesAccidentales(request):
 
         return render(request, "crear_muertes_accidentales.html")
-        
     def EditarMuertesAccidentales(request):
         
         if request.method == "POST":
@@ -192,14 +175,10 @@ class Dashboard(TemplateView):
             return redirect('/')
         else:
             pass
-        
     def VistaEditarMuertesAccidentales(request, muertesAccidentales_id):
-        
         muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
         return render(request, "editar_muertes_accidentales.html", {"muertesAccidentales" : muertesAccidentales})
-
     def EliminarMuertesAccidentales(request, muertesAccidentales_id):
-        
         muertesAccidentales = MuertesAccidentales.objects.get(id = muertesAccidentales_id)
         muertesAccidentales.delete()
         
@@ -207,8 +186,7 @@ class Dashboard(TemplateView):
         return redirect("/")
     #----------------------------------------------------------------------------------------------------
 
-    def RegistrarMuertesHomicidios(request):
-        
+    def RegistrarMuertesHomicidios(request):  
         if request.method == "POST":
             tipoHomicidio = request.POST["tipo_homicidio"]
             numeroVictimas = request.POST["numeros_victimas"]
@@ -218,20 +196,15 @@ class Dashboard(TemplateView):
             return redirect("/")
         else:
             pass
-
     def VistaRegistrarMuertesHomicidios(request):
-
         return render(request, "crear_muertes_homicidio.html")
-        
     def EditarMuertesHomicidios(request):
-        
         if request.method == "POST":
             muertesHomicidio_id =  request.POST["muertesHomicidio_id"]
             tipoHomicidio = request.POST["tipo_homicidio"]
             numeroVictimas = request.POST["numero_victimas"]
 
             muertesHomicidio = MuertesHomicidios.objects.get(id = request.POST["muertesHomicidio_id"])        
-
             muertesHomicidio.id = muertesHomicidio_id
             muertesHomicidio.tipoHomicidio = tipoHomicidio
             muertesHomicidio.numeroVictimas = numeroVictimas
@@ -245,12 +218,9 @@ class Dashboard(TemplateView):
             pass
         
     def VistaEditarMuertesHomidicios(request, muertesHomicidio_id):
-        
         muertesHomicidio = MuertesHomicidios.objects.get(id = muertesHomicidio_id)
         return render(request, "editar_muertes_homicidio.html", {"muertesHomicidio" : muertesHomicidio})
-
     def EliminarMuertesHomidicios(request, muertesHomicidio_id):
-        
         muertesHomicidio = MuertesHomicidios.objects.get(id = muertesHomicidio_id)
         muertesHomicidio.delete()
         
@@ -259,7 +229,6 @@ class Dashboard(TemplateView):
     #----------------------------------------------------------------------------------------------------
 
     def RegistrarMuertesSuicidios(request):
-        
         if request.method == "POST":
             tipoSuicidio = request.POST["tipo_suicidio"]
             numeroVictimas = request.POST["numeros_victimas"]
@@ -269,11 +238,8 @@ class Dashboard(TemplateView):
             return redirect("/")
         else:
             pass
-
     def VistaRegistrarMuertesSuicidios(request):
-
         return render(request, "crear_muertes_suicidios.html")
-        
     def EditarMuertesSuicidios(request):
         
         if request.method == "POST":
@@ -282,7 +248,6 @@ class Dashboard(TemplateView):
             numeroVictimas = request.POST["numero_victimas"]
 
             muerteSuicidio = MuertesSuicidios.objects.get(id = request.POST["muertesSuicidios_id"])        
-
             muerteSuicidio.id = muertesSuicidios_id
             muerteSuicidio.tipoSuicidio= tipoSuicidio
             muerteSuicidio.numeroVictimas = numeroVictimas
@@ -290,18 +255,13 @@ class Dashboard(TemplateView):
             muerteSuicidio.save()   
             
             messages.success(request, "Muerte suicidio Actualizada!")
-            
             return redirect('/')
         else:
             pass
-        
     def VistaEditarMuertesSuicidios(request, muertesSuicidios_id):
-        
         muertesSuicidios = MuertesSuicidios.objects.get(id = muertesSuicidios_id)
         return render(request, "editar_muertes_suicidios.html", {"muertesSuicidios" : muertesSuicidios})
-
     def EliminarMuertesSuicidios(request, muertesSuicidios_id):
-        
         muerteSuicidio = MuertesSuicidios.objects.get(id = muertesSuicidios_id)
         muerteSuicidio.delete()
         

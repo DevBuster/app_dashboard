@@ -1,10 +1,10 @@
 from pyexpat import model
 from django.shortcuts import render, redirect
-from dashboard.models import MuertesViolentas
-from dashboard.models import MuertesAccidentes
-from dashboard.models import MuertesAccidentales
-from dashboard.models import MuertesHomicidios
-from dashboard.models import MuertesSuicidios
+from .models import MuertesViolentas, MuertesAccidentes, MuertesAccidentales, MuertesHomicidios, MuertesSuicidios
+# from dashboard.models import MuertesAccidentes
+# from dashboard.models import MuertesAccidentales
+# from dashboard.models import MuertesHomicidios
+# from dashboard.models import MuertesSuicidios
 from django.contrib import messages
 
 # Create your views here.

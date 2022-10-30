@@ -1,27 +1,36 @@
+from cProfile import label
 from pyexpat import model
 from django.shortcuts import render, redirect
-from .models import MuertesViolentas, MuertesAccidentes, MuertesAccidentales, MuertesHomicidios, MuertesSuicidios
-# from dashboard.models import MuertesAccidentes
-# from dashboard.models import MuertesAccidentales
-# from dashboard.models import MuertesHomicidios
-# from dashboard.models import MuertesSuicidios
+from .models import *
 from django.contrib import messages
 
 # Create your views here.
 
 def home(request):
     
-    muertesViolentas = MuertesViolentas.objects.all()
-    muertesAccidentes = MuertesAccidentes.objects.all()
-    muertesAccidentales = MuertesAccidentales.objects.all()
-    muertesHomicidios = MuertesHomicidios.objects.all()
-    muertesSuicidios = MuertesSuicidios.objects.all()
-    messages.success(request, "¡Registros Cargados!")
-    return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
-                                         "muertesAccidentes" : muertesAccidentes,
-                                        "muertesAccidentales" : muertesAccidentales,
-                                        "muertesHomicidios" : muertesHomicidios,
-                                        "muertesSuicidios" : muertesSuicidios})
+    labels = []
+    data = []
+    
+    queryset = MuertesViolentas.objects.all().order_by('numeroVictimas')[:5]
+    for objeto in queryset:
+        labels.append(objeto.tipoMuerte)
+        data.append(objeto.numeroVictimas)
+    return render(request, "home.html", {
+        'labels':labels,
+        'data':data
+    })
+    
+    # muertesViolentas = MuertesViolentas.objects.all()
+    # muertesAccidentes = MuertesAccidentes.objects.all()
+    # muertesAccidentales = MuertesAccidentales.objects.all()
+    # muertesHomicidios = MuertesHomicidios.objects.all()
+    # muertesSuicidios = MuertesSuicidios.objects.all()
+    # messages.success(request, "¡Registros Cargados!")
+    # return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
+    #                                      "muertesAccidentes" : muertesAccidentes,
+    #                                     "muertesAccidentales" : muertesAccidentales,
+    #                                     "muertesHomicidios" : muertesHomicidios,
+    #                                     "muertesSuicidios" : muertesSuicidios})
 
 def RegistrarMuertesViolentas(request):
     

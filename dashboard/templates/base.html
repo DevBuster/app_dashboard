@@ -103,14 +103,17 @@
     </div>
 
     <script type="text/javascript">
+
+      var df = {{labels|safe}};
+      var df1 = {{data|safe}};
       var ctxBarViolentas = document.getElementById('chartBarMuertesViolentas').getContext('2d');
       var chartBarMuertesViolentas = new Chart(ctxBarViolentas, {
         type: 'bar',
         data:{
-            labels: ['accidentes', 'accidentales', 'homicidio', 'suicidio'],
+            labels: df,
             datasets: [{
               label: 'accidentes',
-                data: [24, 13, 20, 40],
+                data: df1,
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',

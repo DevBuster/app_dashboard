@@ -54,8 +54,8 @@ const btn_generar_grafica = document.querySelectorAll(".btn_generar_grafica");
                 text: "¿Segur@ que quiere eliminar este registro?",
                 icon: "warning", // warnign, error, success, info
                 showCancelButton: true,
-                confirmButtonColor: "green",
-                cancelButtonColor: "red",
+                confirmButtonColor: "red",
+                cancelButtonColor: "green",
                 backdrop: true,
                 showLoaderOnConfirm: true,
                 confirmButtonText: "Confirmar",

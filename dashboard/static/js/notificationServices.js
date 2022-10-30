@@ -86,22 +86,6 @@ const btn_generar_grafica = document.querySelectorAll(".btn_generar_grafica");
         })
     });
 
-    btn_guardar_registro.forEach(btn => {
-        btn.addEventListener('click', function () {
-            Swal.fire({
-                titleText: "REGISTRO CREADO",
-                text: "Nice!!",
-                icon: "success", // warnign, error, success, info
-                confirmButtonColor: "green",
-                backdrop: true,
-                showLoaderOnConfirm: true,
-                confirmButtonText: "Nice!",
-                allowOutsideClick: () => false,
-                allowEscapeKey: () => false,
-            })
-        })
-    });
-
     // generar grafica de barra (simulacion, no es real D: )
     btn_generar_grafica.forEach(btn => {
         btn.addEventListener('click', function () {

@@ -3,44 +3,40 @@ from pyexpat import model
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
-
+from django.views.generic import TemplateView
 # Create your views here.
 
-def home(request):
+class Dashboard(TemplateView):
     
-    labels = []
-    data = []
+    template_name = 'home.html'
     
-    muertesViolentas = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
-    muertesAccidentes = MuertesAccidentes.objects.all().order_by('numeroVictimas')[:20]
-    muertesAccidentales = MuertesAccidentales.objects.all().order_by('numeroVictimas')[:20]
-    muertesHomicidios = MuertesHomicidios.objects.all().order_by('numeroVictimas')[:20]
-    muertesSuicidios = MuertesSuicidios.objects.all().order_by('numeroVictimas')[:20]
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qsMuertesViolentas"] = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
+        context["qsMuertesAccidentes"] = MuertesAccidentes.objects.all().order_by('numeroVictimas')[:20]
+        context["qsMuertesAccidentales"] = MuertesAccidentales.objects.all().order_by('numeroVictimas')[:20]
+        context["qsMuertesHomicidios"] = MuertesHomicidios.objects.all().order_by('numeroVictimas')[:20]
+        context["qsMuertesSuicidios"] = MuertesSuicidios.objects.all().order_by('numeroVictimas')[:20]
+        return context
     
-    for objeto in muertesViolentas:
-        labels.append(objeto.tipoMuerte)
-        data.append(objeto.numeroVictimas)
+    
+    def home(request):
+        muertesSuicidios = MuertesSuicidios.objects.all().order_by('numeroVictimas')[:20]
+            
+        return render(request, "home.html", {
+            "muertesSuicidios" : muertesSuicidios })
         
-    return render(request, "home.html", {
-        'labels' : labels,
-        'data' : data,
-        'muertesViolentas' : muertesViolentas,
-        "muertesAccidentes" : muertesAccidentes,
-        "muertesAccidentales" : muertesAccidentales,
-        "muertesHomicidios" : muertesHomicidios,
-        "muertesSuicidios" : muertesSuicidios })
-    
-    # muertesViolentas = MuertesViolentas.objects.all()
-    # muertesAccidentes = MuertesAccidentes.objects.all()
-    # muertesAccidentales = MuertesAccidentales.objects.all()
-    # muertesHomicidios = MuertesHomicidios.objects.all()
-    # muertesSuicidios = MuertesSuicidios.objects.all()
-    # messages.success(request, "¡Registros Cargados!")
-    # return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
-    #                                      "muertesAccidentes" : muertesAccidentes,
-    #                                     "muertesAccidentales" : muertesAccidentales,
-    #                                     "muertesHomicidios" : muertesHomicidios,
-    #                                     "muertesSuicidios" : muertesSuicidios})
+        # muertesViolentas = MuertesViolentas.objects.all()
+        # muertesAccidentes = MuertesAccidentes.objects.all()
+        # muertesAccidentales = MuertesAccidentales.objects.all()
+        # muertesHomicidios = MuertesHomicidios.objects.all()
+        # muertesSuicidios = MuertesSuicidios.objects.all()
+        # messages.success(request, "¡Registros Cargados!")
+        # return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
+        #                                      "muertesAccidentes" : muertesAccidentes,
+        #                                     "muertesAccidentales" : muertesAccidentales,
+        #                                     "muertesHomicidios" : muertesHomicidios,
+        #                                     "muertesSuicidios" : muertesSuicidios})
 
 def RegistrarMuertesViolentas(request):
     

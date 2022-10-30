@@ -120,11 +120,11 @@
                         
                                             <tbody>
                                                 <tr>
-                                                    {% for i in muertesViolentas %}
+                                                    {% for data in qsMuertesViolentas %}
                                                 </tr>
-                                                    <td>{{i.id}}</td>
-                                                    <td>{{i.tipoMuerte}}</td>
-                                                    <td>{{i.numeroVictimas}}</td>
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.tipoMuerte}}</td>
+                                                    <td>{{data.numeroVictimas}}</td>
                                                     <td>
                                                         
                                                     <a href="editar_muertes_violentas/{{i.id}}" class="btn btn-outline-primary" 
@@ -178,11 +178,11 @@
                         
                                             <tbody>
                                                 <tr>
-                                                    {% for i in muertesAccidentes %}
+                                                    {% for data in qsMuertesAccidentes %}
                                                 </tr>
-                                                    <td>{{i.id}}</td>
-                                                    <td>{{i.tipoVehiculo}}</td>
-                                                    <td>{{i.numeroVictimas}}</td>
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.tipoVehiculo}}</td>
+                                                    <td>{{data.numeroVictimas}}</td>
                                                     <td>
                                                         
                                                     <a href="editar_muertes_accidentes/{{i.id}}" class="btn btn-outline-primary" 
@@ -236,11 +236,11 @@
                         
                                             <tbody>
                                                 <tr>
-                                                    {% for i in muertesAccidentales %}
+                                                    {% for data in qsMuertesAccidentales %}
                                                 </tr>
-                                                    <td>{{i.id}}</td>
-                                                    <td>{{i.tipoAccidente}}</td>
-                                                    <td>{{i.numeroVictimas}}</td>
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.tipoAccidente}}</td>
+                                                    <td>{{data.numeroVictimas}}</td>
                                                     <td>
                                                         
                                                     <a href="editar_muertes_accidentales/{{i.id}}" class="btn btn-outline-primary" 
@@ -294,11 +294,11 @@
                         
                                             <tbody>
                                                 <tr>
-                                                    {% for i in muertesHomicidios %}
+                                                    {% for data in qsMuertesHomicidios %}
                                                 </tr>
-                                                    <td>{{i.id}}</td>
-                                                    <td>{{i.tipoHomicidio}}</td>
-                                                    <td>{{i.numeroVictimas}}</td>
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.tipoHomicidio}}</td>
+                                                    <td>{{data.numeroVictimas}}</td>
                                                     <td>
                                                         
                                                     <a href="editar_muertes_homicidio/{{i.id}}" class="btn btn-outline-primary" 
@@ -351,11 +351,11 @@
                         
                                             <tbody>
                                                 <tr>
-                                                    {% for i in muertesSuicidios %}
+                                                    {% for data in qsMuertesSuicidios %}
                                                 </tr>
-                                                    <td>{{i.id}}</td>
-                                                    <td>{{i.tipoSuicidio}}</td>
-                                                    <td>{{i.numeroVictimas}}</td>
+                                                    <td>{{data.id}}</td>
+                                                    <td>{{data.tipoSuicidio}}</td>
+                                                    <td>{{data.numeroVictimas}}</td>
                                                     <td>
                                                         
                                                     <a href="editar_muertes_suicidios/{{i.id}}" class="btn btn-outline-primary" 
@@ -469,7 +469,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="chartBarMuertesAccidentes" style="position: relative; height:40vh; width:80vw"></canvas>
+                    <canvas id="chartBarMuertesAccidentes"></canvas>
                 </div>
             </div>
         </div>
@@ -483,7 +483,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="chartBarMuertesAccidentales" style="position: relative; height:40vh; width:80vw"></canvas>
+                    <canvas id="chartBarMuertesAccidentales"></canvas>
                 </div>
             </div>
         </div>
@@ -497,7 +497,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="chartBarMuertesHomicidios" style="position: relative; height:40vh; width:80vw"></canvas>
+                    <canvas id="chartBarMuertesHomicidios"></canvas>
                 </div>
             </div>
         </div>
@@ -511,7 +511,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="modalGraficaBarSuicidios" style="position: relative; height:40vh; width:80vw"></canvas>
+                    <canvas id="charBarMuertesSuicidios"></canvas>
                 </div>
             </div>
         </div>
@@ -522,20 +522,174 @@
 {% block scripts %}
 
 <script>
-    $(document).ready(function(){
-        console.log('hola')
+$(document).ready(function(){
+
+    // graficas de pastel
+    var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
+    var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {
+        type: 'pie',
+        data: {
+            labels: [{%for data in qsMuertesViolentas%}'{{data.tipoMuerte}}',{%endfor%}],
+            datasets: [{
+              label: 'violentas',
+                data: [{%for data in qsMuertesViolentas%}{{data.numeroVictimas}},{%endfor%}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
     });
 
-    var dfBarLabelsViolentas = {{labels|safe}};
-      var dfBarDataViolentas = {{data|safe}};
-      var ctxBarViolentas = document.getElementById('chartBarMuertesViolentas').getContext('2d');
-      var chartBarMuertesViolentas = new Chart(ctxBarViolentas, {
-        type: 'bar',
-        data:{
-            labels: dfBarLabelsViolentas,
+    var ctxPieAccidentes = document.getElementById('chartPieMuertesAccidentes').getContext('2d');
+    var chartPieMuertesAccidentes = new Chart(ctxPieAccidentes, {
+        type: 'pie',
+        data: {
+            labels: [{%for data in qsMuertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
             datasets: [{
               label: 'accidentes',
-                data: dfBarDataViolentas,
+                data: [{%for data in qsMuertesAccidentes%}{{data.numeroVictimas}},{%endfor%}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
+    var ctxPieAccidentales = document.getElementById('chartPieMuertesAccidentales').getContext('2d');
+    var chartPieMuertesAccidentales = new Chart(ctxPieAccidentales, {
+        type: 'pie',
+        data: {
+            labels: [{%for data in qsMuertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
+            datasets: [{
+              label: 'accidentales',
+                data: [{%for data in qsMuertesAccidentales%}{{data.numeroVictimas}},{%endfor%}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
+    var ctxPieHomicidios = document.getElementById('chartPieMuertesHomicidios').getContext('2d');
+    var chartPieMuertesHomicidios = new Chart(ctxPieHomicidios, {
+        type: 'pie',
+        data: {
+            labels: [{%for data in qsMuertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
+            datasets: [{
+              label: 'Homicidios',
+                data: [{%for data in qsMuertesHomicidios%}{{data.numeroVictimas}},{%endfor%}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
+    var ctxPieSuicidios = document.getElementById('chartPieMuertesSuicidios').getContext('2d');
+    var chartPieMuertesSuicidios = new Chart(ctxPieSuicidios, {
+        type: 'pie',
+        data: {
+            labels: [{%for data in qsMuertesSuicidios%}'{{data.tipoSuicidio}}',{%endfor%}],
+            datasets: [{
+              label: [{%for data in qsMuertesSuicidios%}'{{data.tipoSuicidio}}',{%endfor%}],
+                data: [{%for data in qsMuertesSuicidios%}{{data.numeroVictimas}},{%endfor%}],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+//-------------------------
+
+    // graficas de barra
+    var ctxBarViolentas = document.getElementById('chartBarMuertesViolentas').getContext('2d');
+    var chartBarMuertesViolentas = new Chart(ctxBarViolentas, {
+        type: 'bar',
+        data: {
+            labels: [{%for data in qsMuertesViolentas%}'{{data.tipoMuerte}}',{%endfor%}],
+            datasets: [{
+              label: 'accidentes',
+                data: [{%for data in qsMuertesViolentas%}{{data.numeroVictimas}},{%endfor%}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -562,11 +716,11 @@
     var ctxBarAccidentes = document.getElementById('chartBarMuertesAccidentes').getContext('2d');
     var chartBarMuertesAccidentes = new Chart(ctxBarAccidentes, {
         type: 'bar',
-        data:{
-            labels: ['mazda', 'tesla', 'ferrari', 'chevrolet'],
+        data: {
+            labels: [{%for data in qsMuertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
             datasets: [{
-              label: 'mazda',
-                data: [25, 10, 25, 20],
+              label: 'accidentes',
+                data: [{%for data in qsMuertesAccidentes%}{{data.numeroVictimas}},{%endfor%}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -588,16 +742,16 @@
                 borderWidth: 1
             }]
         },
-    })
+    });
 
-    var ctxbarAccidentales = document.getElementById('chartBarMuertesAccidentales').getContext('2d');
-    var chartBarMuertesAccidentales = new Chart(ctxbarAccidentales, {
+    var ctxBarAccidentales = document.getElementById('chartBarMuertesAccidentales').getContext('2d');
+    var chartBarMuertesAccidentales = new Chart(ctxBarAccidentales, {
         type: 'bar',
-        data:{
-            labels: ['deporte', 'laboral', 'recreacion'],
+        data: {
+            labels: [{%for data in qsMuertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
             datasets: [{
-              label: 'deporte',
-                data: [25, 10, 25],
+              label: 'accidentes',
+                data: [{%for data in qsMuertesAccidentales%}{{data.numeroVictimas}},{%endfor%}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -619,81 +773,16 @@
                 borderWidth: 1
             }]
         },
-    })
+    });
 
     var ctxBarHomicidios = document.getElementById('chartBarMuertesHomicidios').getContext('2d');
     var chartBarMuertesHomicidios = new Chart(ctxBarHomicidios, {
         type: 'bar',
-        data:{
-            labels: ['casual', 'sicariato', 'venganza'],
-            datasets: [{
-              label: 'casual',
-                data: [20, 15, 20],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        },
-    });
-
-    var ctxBarSuicidios = document.getElementById('modalGraficaBarSuicidios').getContext('2d');
-    var modalGraficaBarSuicidios = new Chart(ctxBarSuicidios, {
-        type: 'bar',
-        data:{
-            labels: ['grito de ayuda', 'finalidad de muerte', 'finalidad de huida'],
-            datasets: [{
-              label: 'grito de ayuda',
-                data: [20, 20, 25],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        },
-    });
-
-    var dfPieLabelsViolentas = {{labels|safe}};
-    var dfPieDataViolentas = {{data|safe}};
-
-    var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
-    var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {
-        type: 'pie',
-        data:{
-            labels: dfPieLabelsViolentas,
+        data: {
+            labels: [{%for data in qsMuertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
             datasets: [{
               label: 'accidentes',
-                data: dfPieDataViolentas,
+                data: [{%for data in qsMuertesHomicidios%}{{data.numeroVictimas}},{%endfor%}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -715,16 +804,16 @@
                 borderWidth: 1
             }]
         },
-    })
+    });
 
-    var ctxPieAccidentes = document.getElementById('chartPieMuertesAccidentes').getContext('2d');
-    var chartPieMuertesAccidentes = new Chart(ctxPieAccidentes, {
-        type: 'pie',
-        data:{
-            labels: ['mazda', 'tesla', 'ferrari', 'chevrolet'],
+    var ctxBarSuicidios = document.getElementById('charBarMuertesSuicidios').getContext('2d');
+    var chartBarMuertesHomicidios = new Chart(ctxBarSuicidios, {
+        type: 'bar',
+        data: {
+            labels: [{%for data in qsMuertesSuicidios%}'{{data.tipoSuicidio}}',{%endfor%}],
             datasets: [{
-              label: 'mazda',
-                data: [25, 10, 25, 20],
+              label: [{%for data in qsMuertesSuicidios%}'{{data.tipoSuicidio}}',{%endfor%}],
+                data: [{%for data in qsMuertesSuicidios%}{{data.numeroVictimas}},{%endfor%}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -746,100 +835,7 @@
                 borderWidth: 1
             }]
         },
-    })
-
-    var ctxPieAccidentales = document.getElementById('chartPieMuertesAccidentales').getContext('2d');
-    var chartPieMuertesAccidentales = new Chart(ctxPieAccidentales, {
-        type: 'pie',
-        data:{
-            labels: ['deporte', 'laboral', 'recreacion'],
-            datasets: [{
-              label: 'deporte',
-                data: [25, 10, 25],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        },
-    })
-
-    var ctxPieHomicidios = document.getElementById('chartPieMuertesHomicidios').getContext('2d');
-    var chartPieMuertesHomicidios = new Chart(ctxPieHomicidios, {
-        type: 'pie',
-        data:{
-            labels: ['casual', 'sicariato', 'venganza'],
-            datasets: [{
-              label: 'casual',
-                data: [20, 15, 20],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        },
-    })
-
-    var ctxPieSuicidios = document.getElementById('chartPieMuertesSuicidios').getContext('2d');
-    var chartPieMuertesSuicidios = new Chart(ctxPieSuicidios, {
-        type: 'pie',
-        data:{
-            labels: ['grito de ayuda', 'finalidad de muerte', 'finalidad de huida'],
-            datasets: [{
-              label: 'grito de ayuda',
-                data: [20, 20, 25],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)',
-                'rgb(54, 162, 235)',
-                'rgb(153, 102, 255)',
-                'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        },
-    })
+    });
+});
 </script>
-
 {% endblock %}

@@ -67,7 +67,7 @@
           
         </div>
         <div class="d-flex">
-          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Integrantes
           </button>
         </div>
@@ -165,8 +165,8 @@
         },
     })
 
-    {% comment %} var ctxAccidentales = document.getElementById('chartMuertesAccidentales').getContext('2d');
-    var chartMuertesAccidentales = new Chart(ctxAccidentales, {
+    var ctxbarAccidentales = document.getElementById('chartBarMuertesAccidentales').getContext('2d');
+    var chartBarMuertesAccidentales = new Chart(ctxbarAccidentales, {
         type: 'bar',
         data:{
             labels: ['deporte', 'laboral', 'recreacion'],
@@ -196,8 +196,8 @@
         },
     })
 
-    var ctxHomicidios = document.getElementById('chartMuertesHomicidios').getContext('2d');
-    var chartMuertesHomicidios = new Chart(ctxHomicidios, {
+    var ctxBarHomicidios = document.getElementById('chartBarMuertesHomicidios').getContext('2d');
+    var chartBarMuertesHomicidios = new Chart(ctxBarHomicidios, {
         type: 'bar',
         data:{
             labels: ['casual', 'sicariato', 'venganza'],
@@ -225,11 +225,11 @@
                 borderWidth: 1
             }]
         },
-    })
+    });
 
-    var ctxSuicidios = document.getElementById('chartMuertesSuicidios').getContext('2d');
-    var chartMuertesSuicidios = new Chart(ctxSuicidios, {
-        type: 'pie',
+    var ctxBarSuicidios = document.getElementById('modalGraficaBarSuicidios').getContext('2d');
+    var modalGraficaBarSuicidios = new Chart(ctxBarSuicidios, {
+        type: 'bar',
         data:{
             labels: ['grito de ayuda', 'finalidad de muerte', 'finalidad de huida'],
             datasets: [{
@@ -256,7 +256,7 @@
                 borderWidth: 1
             }]
         },
-    }) {% endcomment %}
+    });
 
     var ctxPieViolentas = document.getElementById('chartPieMuertesViolentas').getContext('2d');
     var chartPieMuertesViolentas = new Chart(ctxPieViolentas, {

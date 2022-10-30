@@ -143,15 +143,11 @@
                                         <a href="registrar_muertes_violentas/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
 
-                                            <!--modal grafica-->
                                         <button type="button" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarraViolentas">
                                             Graficar
                                         </button>
                                     </div>
                                 </div>
-                                {% comment %} <div>
-                                    <canvas id="chartMuertesViolentas" style="position: relative; height:40vh; width:80vw"></canvas>
-                                </div> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -205,15 +201,11 @@
                                         <a href="crear_muertes_accidentes/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
 
-                                        <!--modal grafica-->
                                         <button type="button" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarraAccidentes">
                                             Graficar
                                         </button>
                                     </div>
                                 </div>
-                                {% comment %} <div>
-                                    <canvas id="chartMuertesAccidentes" style="position: relative; height:40vh; width:80vw"></canvas>
-                                </div> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -266,11 +258,12 @@
                                     <div style="text-align: center; margin-botton: 10px;margin-bottom: 20px;">
                                         <a href="crear_muertes_accidentales/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
+
+                                        <button type="button" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarraAccidentales">
+                                            Graficar
+                                        </button>
                                     </div>
                                 </div>
-                                {% comment %} <div>
-                                    <canvas id="chartMuertesAccidentales" style="position: relative; height:40vh; width:80vw"></canvas>
-                                </div> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -323,11 +316,12 @@
                                     <div style="text-align: center; margin-botton: 10px;margin-bottom: 20px;">
                                         <a href="crear_muertes_homicidio/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
+
+                                        <button type="button" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarraHomicidios">
+                                            Graficar
+                                        </button>
                                     </div>
                                 </div>
-                                {% comment %} <div>
-                                    <canvas id="chartMuertesHomicidios" style="position: relative; height:40vh; width:80vw"></canvas>
-                                </div> {% endcomment %}
                             </div>
                       </div>
                     </div>
@@ -379,6 +373,10 @@
                                     <div style="text-align: center; margin-botton: 10px;margin-bottom: 20px;">
                                         <a href="crear_muertes_suicidios/" class="btn btn-outline-success"
                                         title="Crear">Registrar</a>
+
+                                        <button type="button" class="btn btn-outline-dark btn_generar_grafica" data-bs-toggle="modal" data-bs-target="#modalGraficaBarraSuicidios">
+                                            Graficar
+                                        </button>
                                     </div>
                                 </div>
                                 {% comment %} <div>
@@ -452,10 +450,10 @@
     <div class="modal fade" id="modalGraficaBarraViolentas" aria-hidden="true" aria-labelledby="modalGraficaBarraViolentasToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                {% comment %} <div class="modal-header">
-                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Modal 1</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Muertes violentas</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> {% endcomment %}
+                </div>
                 <div class="modal-body">
                     <canvas id="chartBarMuertesViolentas" style="position: relative; height:40vh; width:80vw"></canvas>
                 </div>
@@ -466,12 +464,54 @@
     <div class="modal fade" id="modalGraficaBarraAccidentes" aria-hidden="true" aria-labelledby="modalGraficaBarraAccidentesToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                {% comment %} <div class="modal-header">
-                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Modal 1</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Accidentes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div> {% endcomment %}
+                </div>
                 <div class="modal-body">
                     <canvas id="chartBarMuertesAccidentes" style="position: relative; height:40vh; width:80vw"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalGraficaBarraAccidentales" aria-hidden="true" aria-labelledby="modalGraficaBarraAccidentalesToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraToggleLabel">Muertes accidentales</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="chartBarMuertesAccidentales" style="position: relative; height:40vh; width:80vw"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalGraficaBarraHomicidios" aria-hidden="true" aria-labelledby="modalGraficaBarraAccidentalesHomicidiosToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraHomicidiosToggleLabel">Homicidios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="chartBarMuertesHomicidios" style="position: relative; height:40vh; width:80vw"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalGraficaBarraSuicidios" aria-hidden="true" aria-labelledby="modalGraficaBarraSuicidiosToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGraficaBarraSuicidiosToggleLabel">Suicidios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="modalGraficaBarSuicidios" style="position: relative; height:40vh; width:80vw"></canvas>
                 </div>
             </div>
         </div>

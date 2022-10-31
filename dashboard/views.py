@@ -7,40 +7,18 @@ from django.contrib import messages
 # Create your views here.
 
 def home(request):
-    
-    labels = []
-    data = []
-    
-    muertesViolentas = MuertesViolentas.objects.all().order_by('numeroVictimas')[:20]
-    muertesAccidentes = MuertesAccidentes.objects.all().order_by('numeroVictimas')[:20]
-    muertesAccidentales = MuertesAccidentales.objects.all().order_by('numeroVictimas')[:20]
-    muertesHomicidios = MuertesHomicidios.objects.all().order_by('numeroVictimas')[:20]
-    muertesSuicidios = MuertesSuicidios.objects.all().order_by('numeroVictimas')[:20]
-    
-    for objeto in muertesViolentas:
-        labels.append(objeto.tipoMuerte)
-        data.append(objeto.numeroVictimas)
         
-    return render(request, "home.html", {
-        'labels' : labels,
-        'data' : data,
-        'muertesViolentas' : muertesViolentas,
-        "muertesAccidentes" : muertesAccidentes,
-        "muertesAccidentales" : muertesAccidentales,
-        "muertesHomicidios" : muertesHomicidios,
-        "muertesSuicidios" : muertesSuicidios })
-    
-    # muertesViolentas = MuertesViolentas.objects.all()
-    # muertesAccidentes = MuertesAccidentes.objects.all()
-    # muertesAccidentales = MuertesAccidentales.objects.all()
-    # muertesHomicidios = MuertesHomicidios.objects.all()
-    # muertesSuicidios = MuertesSuicidios.objects.all()
-    # messages.success(request, "¡Registros Cargados!")
-    # return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
-    #                                      "muertesAccidentes" : muertesAccidentes,
-    #                                     "muertesAccidentales" : muertesAccidentales,
-    #                                     "muertesHomicidios" : muertesHomicidios,
-    #                                     "muertesSuicidios" : muertesSuicidios})
+    muertesViolentas = MuertesViolentas.objects.all()
+    muertesAccidentes = MuertesAccidentes.objects.all()
+    muertesAccidentales = MuertesAccidentales.objects.all()
+    muertesHomicidios = MuertesHomicidios.objects.all()
+    muertesSuicidios = MuertesSuicidios.objects.all()
+    messages.success(request, "¡Registros Cargados!")
+    return render(request, "home.html", {"muertesViolentas" : muertesViolentas, 
+                                        "muertesAccidentes" : muertesAccidentes,
+                                        "muertesAccidentales" : muertesAccidentales,
+                                        "muertesHomicidios" : muertesHomicidios,
+                                        "muertesSuicidios" : muertesSuicidios})
 
 def RegistrarMuertesViolentas(request):
     

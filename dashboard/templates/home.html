@@ -559,7 +559,7 @@
             data: {
                 labels: [{%for data in muertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentes',
+                  label: [{%for data in muertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
                     data: [{%for data in muertesAccidentes%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -590,7 +590,7 @@
             data: {
                 labels: [{%for data in muertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentales',
+                  label: [{%for data in muertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
                     data: [{%for data in muertesAccidentales%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -621,7 +621,7 @@
             data: {
                 labels: [{%for data in muertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
                 datasets: [{
-                  label: 'Homicidios',
+                  label: [{%for data in muertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
                     data: [{%for data in muertesHomicidios%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -685,7 +685,7 @@
             data: {
                 labels: [{%for data in muertesViolentas%}'{{data.tipoMuerte}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentes',
+                  label: [{%for data in muertesViolentas%}'{{data.tipoMuerte}}',{%endfor%}],
                     data: [{%for data in muertesViolentas%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -716,7 +716,7 @@
             data: {
                 labels: [{%for data in muertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentes',
+                  label: [{%for data in muertesAccidentes%}'{{data.tipoVehiculo}}',{%endfor%}],
                     data: [{%for data in muertesAccidentes%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -747,7 +747,7 @@
             data: {
                 labels: [{%for data in muertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentes',
+                  label: [{%for data in muertesAccidentales%}'{{data.tipoAccidente}}',{%endfor%}],
                     data: [{%for data in muertesAccidentales%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -778,7 +778,7 @@
             data: {
                 labels: [{%for data in muertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
                 datasets: [{
-                  label: 'accidentes',
+                  label: [{%for data in muertesHomicidios%}'{{data.tipoHomicidio}}',{%endfor%}],
                     data: [{%for data in muertesHomicidios%}{{data.numeroVictimas}},{%endfor%}],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

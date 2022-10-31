@@ -508,7 +508,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="modalGraficaBarSuicidios"></canvas>
+                    <canvas id="chartBarSuicidios"></canvas>
                 </div>
             </div>
         </div>
@@ -803,8 +803,8 @@
             },
         });
     
-        var ctxBarSuicidios = document.getElementById('charBarMuertesSuicidios').getContext('2d');
-        var chartBarMuertesHomicidios = new Chart(ctxBarSuicidios, {
+        var ctxBarSuicidios = document.getElementById('chartBarSuicidios').getContext('2d');
+        var chartBarSuicidios = new Chart(ctxBarSuicidios, {
             type: 'bar',
             data: {
                 labels: [{%for data in muertesSuicidios%}'{{data.tipoSuicidio}}',{%endfor%}],
